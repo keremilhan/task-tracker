@@ -23,7 +23,7 @@ function App() {
 
   // Fetch Tasks
   const fetchTasks = async () => {
-    const res = await fetch('https://task-tracker-with-json-server.herokuapp.com/tasks')
+    const res = await fetch('https://task-tracker-with-json-server.herokuapp.com/')
     const data = await res.json()
 
     return data
@@ -31,7 +31,7 @@ function App() {
 
     // Fetch Task
     const fetchTask = async (id) => {
-      const res = await fetch(`https://task-tracker-with-json-server.herokuapp.com/tasks/${id}`)
+      const res = await fetch(`https://task-tracker-with-json-server.herokuapp.com/${id}`)
       const data = await res.json()
   
       return data
@@ -39,7 +39,7 @@ function App() {
 
   // Add Task
   const addTask = async (task) => {
-    const res = await fetch('https://task-tracker-with-json-server.herokuapp.com/tasks',{
+    const res = await fetch('https://task-tracker-with-json-server.herokuapp.com/',{
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -64,7 +64,7 @@ function App() {
 
   // Delete Task
   const deleteTask = async (id) =>{
-    await fetch(`https://task-tracker-with-json-server.herokuapp.com/tasks/${id}`, {
+    await fetch(`https://task-tracker-with-json-server.herokuapp.com/${id}`, {
       method: 'DELETE'
     })
 
@@ -76,7 +76,7 @@ function App() {
     const taskToToggle = await fetchTask(id)
     const updTask = {...taskToToggle, reminder: !taskToToggle.reminder}
 
-    const res = await fetch(`https://task-tracker-with-json-server.herokuapp.com/tasks/${id}`,{
+    const res = await fetch(`https://task-tracker-with-json-server.herokuapp.com/${id}`,{
       method: 'PUT',
       headers: {
         'Content-type': 'application/json'
@@ -102,7 +102,7 @@ function App() {
                     {tasks.length > 0 ? <Tasks onDelete={deleteTask} tasks={tasks} onToggle={toggleReminder} /> : "No tasks to show"}
                   </>
         } />
-        <Route path='about' element={<About />} />
+        <Route path='/about' element={<About />} />
         </Routes>
         <Footer />
       </div> 
